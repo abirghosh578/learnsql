@@ -24,6 +24,6 @@ INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (10,'Jharkhand','1/
 SELECT * FROM EMPLOYEE;
 GO
 
-SELECT *, rank() over (order by sales desc) rnk ,
-dense_rank() over (order by sales desc) dense_rnk 
+SELECT *, rank() over (partition by state order by sales desc) rnk ,
+dense_rank() over (partition by state order by sales desc) dense_rnk 
 from EMPLOYEE
