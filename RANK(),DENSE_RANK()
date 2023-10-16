@@ -1,0 +1,28 @@
+
+-- create
+CREATE TABLE EMPLOYEE (
+  Id int,
+  transaction_date date,
+  sales int
+);
+
+-- insert
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/1/2021', 52);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/2/2021', 52);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/3/2021', 67);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/4/2021', 76);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/5/2021', 52);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/6/2021', 12);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/7/2021', 100);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/8/2021', 200);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/9/2021', 11);
+INSERT INTO EMPLOYEE(Id,transaction_date,sales) VALUES (1, '1/10/2021', 52);
+
+
+-- fetch 
+SELECT * FROM EMPLOYEE;
+GO
+
+SELECT *, rank() over (order by sales) rnk ,
+dense_rank() over (order by sales) dense_rnk 
+from EMPLOYEE
