@@ -1,0 +1,44 @@
+
+-- create
+CREATE TABLE EMPLOYEE (
+  Id int,
+  state varchar(50),
+  transaction_date date,
+  sales int
+);
+
+-- insert
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (1,'West Bengal', '1/1/2021', 52);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (2,'West Bengal', '1/2/2021', 52);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (3,'West Bengal', '1/3/2021', 67);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (4,'Karnataka','1/4/2021', 76);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (5,'Karnataka' , '1/5/2021', 52);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (6,'Jharkhand', '1/6/2021', 12);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (7,'Jharkhand', '1/7/2021', 100);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (8,'Jharkhand', '1/8/2021', 200);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (9,'Jharkhand', '1/9/2021', 11);
+INSERT INTO EMPLOYEE(Id,state,transaction_date,sales) VALUES (10,'Jharkhand','1/10/2021', 52);
+
+
+-- fetch 
+SELECT * FROM EMPLOYEE;
+GO
+
+--running sum
+SELECT *, Sum(sales) over (partition by state order by transaction_date rows between
+unbounded preceding and current row) running_sum
+from EMPLOYEE
+
+--total sum using rows between(not necessary but confusing)
+SELECT *, SUM(sales) over(partition by state order by transaction_date rows between
+unbounded preceding 
+and unbounded following) total_sum
+from EMPLOYEE
+
+--both columns produce the same result
+SELECT *
+, SUM(sales) over(partition by state order by transaction_date) total_sum
+,Sum(sales) over (partition by state order by transaction_date rows between
+unbounded preceding and current row) running_sum
+from EMPLOYEE
+
