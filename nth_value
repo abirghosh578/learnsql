@@ -1,0 +1,46 @@
+-- create a table
+CREATE TABLE booksales (
+  id INTEGER PRIMARY KEY,
+  state TEXT NOT NULL,
+  datee date not NULL,
+  sales int
+);
+-- insert some values
+
+
+insert into booksales values(1,'Jharkhand','06-22-2022',603);
+insert into booksales values(2,'Jharkhand','06-21-2022',478);
+insert into booksales values(3,'Jharkhand','06-20-2022',679);
+insert into booksales values(4,'Jharkhand','06-19-2022',443);
+insert into booksales values(5,'Jharkhand','06-18-2022',540);
+insert into booksales values(6,'Jharkhand','06-17-2022',806);
+insert into booksales values(7,'Jharkhand','06-16-2022',939);
+insert into booksales values(8,'Jharkhand','06-15-2022',803);
+insert into booksales values(9,'Jharkhand','06-14-2022',440);
+insert into booksales values(10,'Jharkhand','06-13-2022',444);
+insert into booksales values(11,'Bihar','06-22-2022',563);
+insert into booksales values(12,'Bihar','06-21-2022',371);
+insert into booksales values(13,'Bihar','06-20-2022',881);
+insert into booksales values(14,'Bihar','06-19-2022',541);
+insert into booksales values(15,'Bihar','06-18-2022',829);
+insert into booksales values(16,'Bihar','06-17-2022',846);
+insert into booksales values(17,'Bihar','06-16-2022',653);
+insert into booksales values(18,'Bihar','06-15-2022',531);
+insert into booksales values(19,'Bihar','06-14-2022',327);
+insert into booksales values(20,'Bihar','06-13-2022',717);
+insert into booksales values(21,'Maharastra','06-22-2022',925);
+insert into booksales values(22,'Maharastra','06-21-2022',896);
+insert into booksales values(23,'Maharastra','06-20-2022',647);
+insert into booksales values(24,'Maharastra','06-19-2022',419);
+insert into booksales values(25,'Maharastra','06-18-2022',762);
+insert into booksales values(26,'Maharastra','06-17-2022',415);
+insert into booksales values(27,'Maharastra','06-16-2022',834);
+insert into booksales values(28,'Maharastra','06-15-2022',822);
+insert into booksales values(29,'Maharastra','06-14-2022',887);
+insert into booksales values(30,'Maharastra','06-13-2022',828);
+
+SELECT * FROM booksales;
+
+SELECT *, nth_value(sales,4) over (partition by state order by datee rows between
+unbounded preceding and unbounded following) 
+FROM booksales;
