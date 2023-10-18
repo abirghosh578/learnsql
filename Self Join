@@ -1,0 +1,20 @@
+-- create a table
+CREATE TABLE Employee (
+  EMP_id INTEGER PRIMARY KEY,
+  Name TEXT NOT NULL,
+  Mgr_id INTEGER
+);
+
+
+insert into Employee values(1,'A',3);
+insert into Employee values(2,'B',1);
+insert into Employee values(3,'C',NULL);
+insert into Employee values(4,'D',1);
+insert into Employee values(5,'E',1);
+
+
+
+Select * from Employee;
+
+Select E.Name Emp_Name, M.Name Mgr_Name from Employee E Left JOIN Employee M
+ON   E.Mgr_id = M.EMP_id 
