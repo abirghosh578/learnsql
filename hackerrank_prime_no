@@ -1,0 +1,21 @@
+DECLARE @NUMBER INT = 3
+DECLARE @RESULT VARCHAR(MAX) ='2'
+DECLARE @I INT = 2
+DECLARE @COUNT INT = 0
+WHILE(@NUMBER <=1000)
+BEGIN
+    
+    WHILE(@I <= @NUMBER)
+    BEGIN
+        if @NUMBER % @I = 0
+           SET @COUNT = @COUNT + 1
+           SET @I = @I + 1
+    END
+    IF @COUNT = 1
+      SET @RESULT = @RESULT + "&" + CAST(@NUMBER AS VARCHAR(MAX)); 
+         
+    SET @COUNT = 0
+    SET @NUMBER = @NUMBER + 1
+    SET @I = 2
+END
+PRINT @RESULT
